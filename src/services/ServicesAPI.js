@@ -9,10 +9,10 @@ export const getContacts = async (dispatch) => {
     CreateAgenda()
  }
     console.log(data)
-    if (Array.isArray(data.contacts)) {
+    if (Array.isArray(data)) {
         dispatch({
             type: "set_contacts",
-            payload: data.contacts
+            payload: data
         });
     }
 }
@@ -47,7 +47,6 @@ export const deleteContact = async (id, dispatch) => {
     )
     if (response.ok) {
         getContacts(dispatch)
-        location.reload
     }
 }
 

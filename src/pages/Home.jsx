@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Contact } from "../components/ContactCard.jsx";
+import { Contact } from "../components/Contact.jsx";
 import { getContacts } from "../services/ServicesAPI.js";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { deleteContact } from "../services/ServicesAPI";
@@ -42,15 +42,15 @@ export const Home = () => {
 			<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
-						<div className="modal-header">
+						<div className="modal-header bg-danger text-white">
 							<h1 className="modal-title fs-5" id="staticBackdropLabel">{name}</h1>
 							<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div className="modal-body">
-							Are you sure you want to delete this contact?
+							Do you want to delete this contact?
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
 							<button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => { deleteContact(ID, dispatch) }}>Delete</button>
 						</div>
 					</div>

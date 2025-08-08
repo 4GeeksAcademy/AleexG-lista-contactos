@@ -4,7 +4,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer";  // Custom hook for ac
 import { createContact, editContact } from "../services/ServicesAPI";
 import { useEffect, useState } from "react";
 
-export const crearContacto = () => {
+export const ContactCreation = () => {
   // Access the global state and dispatch function using the useGlobalReducer hook.
   const { store, dispatch } = useGlobalReducer()
   const navigate = useNavigate()
@@ -48,11 +48,19 @@ export const crearContacto = () => {
 
   useEffect(() => {
     if (id) {
-      setNewContact(store.contacts?.filter(contact => contact.id == id)[0])
+      const contact = store.contacts?.find(contact => contact.id == id);
+      if (contact) setNewContact(contact);
       setIsEditing(true);
-    } else
-      setIsEditing(false)
-  }, [isEditing])
+    } else {
+      setIsEditing(false);
+      setNewContact({
+        name: "",
+        address: "",
+        phone: "",
+        email: "",
+      });
+    }
+  }, [id]);
 
   return (
     <>
