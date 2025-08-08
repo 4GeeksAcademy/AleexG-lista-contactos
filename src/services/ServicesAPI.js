@@ -1,5 +1,3 @@
-import { array } from "prop-types";
-
 export const getContacts = async (dispatch) => {
     const response = await fetch('https://playground.4geeks.com/contact/agendas/User/contacts');
     const data = await response.json();
